@@ -34,16 +34,45 @@ class Title extends Phaser.Scene {
 		this.load.image('t','/Text.png');
     }
     create() {
-
         this.add.image(480, 360, 'bg');
-        let t1 = this.add.image(560, 250, 't');
+
+        let t1 = this.add.image(560, 300, 't');
         t1.alpha = 0;
-        this.tweens.add({
+
+        this.tweens.chain({
             targets: t1,
-            alpha: 1,
-            duration: 3000,
-            ease: 'Linear',
+            tweens: [
+                {
+                    alpha: 1,
+                    duration: 1000,
+                    ease: 'Linear'
+                },
+                {
+                    y: '-=100',
+                    duration: 1000,
+                    ease: 'Linear',
+                    onComplete: () => {
+                        let tapText =  this.add.text(560, 480, "Tap the screen to Start",  { 
+                            fontSize: 48, 
+                            color: '#000000' 
+                        });
+                        tapText.setOrigin(0.5);
+                        tapText.alpha = 0;
+                        
+                        this.tweens.add({
+                            targets: tapText,
+                            alpha: 1,
+                            duration: 1000,
+                            ease: 'Linear',
+                            yoyo: true,
+                            repeat: -1
+                        });
+                    }
+                }
+            ]
         });
+
+       
         
         this.input.on('pointerup', () => {
             this.cameras.main.fade(1000, 0,0,0);
