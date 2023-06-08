@@ -30,7 +30,7 @@ class Title extends Phaser.Scene {
     }
     preload() {
         this.load.path = './assets/Title/';
-        this.load.image('bg','/background.png');
+        this.load.image('bg','/Background.png');
 		this.load.image('t','/Text.png');
     }
     create() {
