@@ -34,9 +34,9 @@ class Title extends Phaser.Scene {
 		this.load.image('t','/Text.png');
     }
     create() {
-        this.add.image(480, 360, 'bg');
+        this.add.image(640, 360, 'bg');
 
-        let t1 = this.add.image(560, 300, 't');
+        let t1 = this.add.image(640, 300, 't');
         t1.alpha = 0;
 
         this.tweens.chain({
@@ -52,7 +52,7 @@ class Title extends Phaser.Scene {
                     duration: 1000,
                     ease: 'Linear',
                     onComplete: () => {
-                        let tapText =  this.add.text(560, 480, "Tap the screen to Start",  { 
+                        let tapText =  this.add.text(640, 480, "Tap the screen to Start",  { 
                             fontSize: 48, 
                             color: '#000000' 
                         });
